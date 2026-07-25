@@ -1,0 +1,180 @@
+/* Responsive base &amp; utility styles for Sanket website
+   - Put this in css/responsive.css or merge into your main stylesheet.
+*/
+
+/* Box sizing + sensible defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* base */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  line-height: 1.45;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #111;
+  background: #fff;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Images &amp; media should be fluid */
+img,
+picture,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headings scale down on small screens */
+h1 { font-size: 2.25rem; margin: .5rem 0; }
+h2 { font-size: 1.5rem; margin: .5rem 0; }
+p  { font-size: 1rem; margin: .5rem 0 1rem 0; }
+
+/* Simple responsive grid for content sections */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Utility to create columns that collapse on small screens */
+.col-2 {
+  flex: 1 1 calc(50% - 12px);
+}
+
+/* Navigation: desktop horizontal, mobile collapses */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.site-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 6px;
+  border-radius: 4px;
+}
+
+.nav-toggle {
+  display: none; /* shown on mobile */
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+}
+
+/* Hero image handling */
+.hero {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Footer spacing */
+.site-footer {
+  padding: 32px 0;
+  background: #f7f7f7;
+}
+
+/* === Tablet breakpoint (up to 1024px) === */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  h1 { font-size: 2rem; }
+  .col-2 { flex: 1 1 calc(50% - 12px); }
+}
+
+/* === Mobile breakpoint (up to 768px) === */
+@media (max-width: 768px) {
+
+  /* Stack rows into single column */
+  .row {
+    display: block;
+  }
+  .col,
+  .col-2 {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  /* Narrow container paddings */
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* Scale down headings and body text for readability */
+  html { font-size: 15px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.125rem; }
+
+  /* Mobile nav: hide desktop links, show toggle */
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* When nav is open, make it visible (class toggled via JS) */
+  .site-nav.open {
+    display: flex;
+  }
+
+  /* Make buttons and links easier to tap */
+  .site-nav a,
+  .nav-link {
+    padding: 12px 8px;
+  }
+
+  /* Reduce hero height if needed */
+  .hero img {
+    object-fit: cover;
+    height: auto;
+    max-height: 360px;
+  }
+}
+
+/* Small accessibility/focus styles */
+a:focus,
+button:focus {
+  outline: 3px solid rgba(21, 156, 228, 0.6);
+  outline-offset: 2px;
+}
